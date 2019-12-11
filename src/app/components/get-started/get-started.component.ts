@@ -36,6 +36,12 @@ export class GetStartedComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Mon commentaire JSDOC
+   * @author blabla
+   * @return ...
+   * @param ...
+   */
   buttonClick(): void {
     console.log('button click');
     this.isDisabled = !this.isDisabled;
