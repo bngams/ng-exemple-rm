@@ -1,0 +1,57 @@
+<!-- Angular expression - interpolation -->
+<h1>{{ title }}</h1>
+
+<!-- (event)="method()" event-binding-->
+<button type="button" (click)="buttonClick()">Change disabled</button>
+
+<!-- manual init - with simple html attribute - non dynamique-->
+<button type="button" disabled="{{ isDisabled }}">Disabled button</button>
+
+<!-- real property binding - with angular specific attribute - dynamique -->
+<button type="button" [disabled]="isDisabled">Dynamic Disabled button</button>
+
+<p>
+    <!-- pipe => Classe qui définit une fonction qu'on peut appeler via | -->
+    <!-- equivalent de uppercase(title) -->
+    {{ title | uppercase }}
+</p>
+<p>
+    {{ date | date:'dd/MM/yy'}}
+</p>
+<p>
+    {{ price | tva:20:1 | currency:'EUR' }}
+</p>
+
+<!-- directives d'attributs (equivalent du property binding)-->
+<!-- modifier les attributs des balises -->
+<p [hidden]="isDisabled">Mon texte caché via directive d'attribut</p>
+<!-- <p [appHighLight] .. -->
+<!-- <p [ngClass]="getClasses()"></p>
+<p [ngStyles]="{...}"></p> -->
+
+<!-- directive de structure -->
+<!-- modifier le dom -->
+<p *ngIf="isDisabled">Mon texte caché via directive de structure</p>
+<!-- * => raccourci de cette syntaxe -->
+<ng-template [ngIf]="isDisabled">
+    <p>Mon texte caché via directive de structure</p>
+</ng-template>
+<!-- ngIf, else, ngSwitch, ngFor -->
+
+<ul>
+    <li *ngFor="let p of products">
+        {{ p.name }} - {{ p.price }}
+    </li>
+</ul>
+
+<table>
+    <ng-container *ngFor="let p of products">
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.price }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">Produits details: ....</td>
+        </tr>
+    </ng-container>
+</table>
